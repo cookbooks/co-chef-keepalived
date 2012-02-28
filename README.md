@@ -1,20 +1,42 @@
 Description
 ===========
 
-Installs keepalived and pushes the configuration file out.
+This is a fork of the [Opscode keepalived cookbook](https://github.com/opscode/cookbooks/tree/master/keepalived). It installs keepalived and defines attributes that can be used to customize the configuration file. Additionally, there are configuration files tailored for:
+* HAProxy
+* (postgresql coming soon)
 
 Changes
 =======
+## v0.8.0:
+* Added attributes for customization
+* Added a customized config for HAProxy
 
 ## v0.7.1:
 
-* Current public release.
+* Last public release from Opscode.
+
+Attributes
+==========
+The following attributes are defined in this cookbook. See `attributes/default.rb` for default values.
+
+* `node[:keepalived][:template_suffix]` - Specify a suffix to determine which template is used to write the config file for keepalived. E.G. specify "haproxy to use the `keepalived_haproxy.conf.erb` suffix. See the files in `templates/default/` for more information.
+* `node[:keepalived][:backup_nodes]` - A list of node names that will act as a backup instance.
+* node[:keepalived][:notification_email_from]` - the email address from which notifications are sent. This requires an SMTP server (see below).
+* `node[:keepalived][:notification_emails]` - a list of email address to which notifications are sent. This requires an SMTP server (see below)
+* `node[:keepalived][:smtp_server]` - The SMTP server used to send notification emails.
+* `node[:keepalived][:smtp_connect_timeout]` - connection timeout for the SMTP server (e.g. 30)
+* `node[:keepalived][:vrrp_instances]` - A list of hashes describing each vrrp instance. See the `attributes/default.rb` file for an example.
+* `node[:keepalived][:virtual_servers]` - A list of hashes describing each virtual server (not yet complete).
+
+
+Recipes
+=======
+
 
 Usage
 =====
 
-Modify the sample template to suit your environment and configuration
-requirements.
+Create a Role and override the attributes to fit your needs.
 
 License and Author
 ==================

@@ -31,7 +31,15 @@ The following attributes are defined in this cookbook. See `attributes/default.r
 
 Recipes
 =======
+This cookbook contains the following recipies.
 
+`default`
+---------
+Installs and configures keepalived.
+
+`ip_nonlocal_bind`
+------------------
+This recipe makes sure a system can find to a non-local ip address. This is required for IP Failover using a floating (virtual) IP address.
 
 Usage
 =====

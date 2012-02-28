@@ -26,8 +26,16 @@ service "keepalived" do
   action [:enable, :start]
 end
 
+template_source = begin
+  if node.keepalived.template_suffix.empty?
+    "keepalived.conf.erb"
+  else
+    "keepalived_#{node.keepalived.template_suffix}.conf.erb"
+  end
+end
+
 template "/etc/keepalived/keepalived.conf" do
-  source "keepalived.conf.erb"
+  source template_source
   owner "root"
   group "root"
   mode 0644

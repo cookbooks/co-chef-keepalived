@@ -7,6 +7,9 @@ This is a fork of the [Opscode keepalived cookbook](https://github.com/opscode/c
 
 Changes
 =======
+## v0.8.1:
+* Added `ip_nonlocal_bind` recipe
+
 ## v0.8.0:
 * Added attributes for customization
 * Added a customized config for HAProxy

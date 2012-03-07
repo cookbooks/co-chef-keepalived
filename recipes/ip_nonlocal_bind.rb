@@ -2,7 +2,7 @@
 # Cookbook Name:: keepalived
 # Recipe:: ip_nonlocal_bind
 #
-# Copyright 2009, Opscode, Inc.
+# Copyright 2012, Coroutine LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

@@ -52,6 +52,7 @@ Create a Role and override the attributes to fit your needs.
 License and Author
 ==================
 
+Author:: Brad Montgomery (<bmontgomery@opscode.com>)
 Author:: Joshua Timberman (<joshua@opscode.com>)
 
 Copyright:: 2009, Opscode, Inc

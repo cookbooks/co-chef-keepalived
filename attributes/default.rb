@@ -3,7 +3,8 @@
 # Attributes:: keepalived
 #
 
-# Which template to use. Including haproxy
+# Which template to use; defaults to keepalived.conf.erb
+# Other options include "vrrp" (for vrrp instances) or (TODO: "real"; for real servers)
 default[:keepalived][:template_suffix] = ""
 default[:keepalived][:notification_emails] = []
 default[:keepalived][:notification_email_from] = "root@localhost"
@@ -23,12 +24,27 @@ default[:keepalived][:vrrp_instances] = [
     :virtual_ipaddress  => ["127.0.0.1"],
     :backup_nodes       => [], # node names for backup hosts. These will
                                # be listed with a BACKUP state.
-    :track_script      => {
-      :name     => "chk_haproxy",
-      :script   => "killall -0 haproxy",
-      :interval => 2,
+    :track_script => {
+      :name     => "",  # name for your track script, "eg: chk_haproxy"
+      :script   => "",  # actual command to do the check, "eg: killall -0 haproxy"
+      :interval => 2,   
       :weight   => 2
-    }  
+    },
+
+    :notify_scripts => {
+      :master => {
+        :args => nil, # args for above shell script
+        :command => nil # actual command to write in the above file
+      },
+      :backup => {
+        :args => nil, # args for above shell script
+        :command => nil # actual command to write in the above file
+      },
+      :fault => {
+        :args => nil, # args for above shell script
+        :command => nil # actual command to write in the above file
+      }
+    }
   }
 ]
 

@@ -41,3 +41,33 @@ template "/etc/keepalived/keepalived.conf" do
   mode 0644
   notifies :restart, resources(:service => "keepalived")
 end
+
+# Set up notification scripts if they exist
+node.keepalived.vrrp_instances.each do |instance|
+  if instance['notify_scripts'] && (not instance['notify_scripts'].empty?)
+    instance['notify_scripts'].each do |state, info|
+
+      # create the directory for these
+      directory "/etc/keepalived/scripts/#{instance['name']}" do
+        owner "root"
+        group "root"
+        mode "0755"
+        action :create
+        recursive true
+      end
+    
+      # write the script file
+      template "/etc/keepalived/scripts/#{instance['name']}/notify_#{state}.sh" do
+        source "notify_script.sh.erb"
+        owner "root"
+        group "root"
+        mode "0755"
+        variables(
+          :command => info['command'],
+          :args    => info['args']
+       )
+       notifies :restart, resources(:service => "keepalived"), :delayed
+      end
+    end
+  end
+end

@@ -1,9 +1,7 @@
 Description
 ===========
 
-This is a fork of the [Opscode keepalived cookbook](https://github.com/opscode/cookbooks/tree/master/keepalived). It installs keepalived and defines attributes that can be used to customize the configuration file. Additionally, there are configuration files tailored for:
-* HAProxy
-* (postgresql coming soon)
+This is a fork of the [Opscode keepalived cookbook](https://github.com/opscode/cookbooks/tree/master/keepalived). It installs keepalived and defines attributes that can be used to customize the configuration file.
 
 Changes
 =======

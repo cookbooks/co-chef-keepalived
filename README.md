@@ -5,6 +5,10 @@ This is a fork of the [Opscode keepalived cookbook](https://github.com/opscode/c
 
 Changes
 =======
+## v0.8.2:
+* Added additional attributes, including support for notify scripts.
+* Replaced app-specific templates (e.g. `keepalived_haproxy.conf.erb`) with a vrrp template.
+
 ## v0.8.1:
 * Added `ip_nonlocal_bind` recipe
 

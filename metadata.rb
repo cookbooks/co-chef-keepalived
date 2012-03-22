@@ -1,9 +1,9 @@
-maintainer        "Opscode, Inc."
-maintainer_email  "cookbooks@opscode.com"
+maintainer        "Coroutine, LLC"
+maintainer_email  "bmontgomery@coroutine.com"
 license           "Apache 2.0"
-description       "Installs and configures keepalived"
+description       "Fork of the Opscode cookbook; Installs/configures keepalived"
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           "0.8.1"
+version           "0.8.2"
 supports          "ubuntu"
 
 recipe "keepalived", "Installs and configures keepalived"
